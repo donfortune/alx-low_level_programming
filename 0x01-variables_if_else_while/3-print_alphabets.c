@@ -10,16 +10,13 @@
 
 int main(void)
 {
-	char Input[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 	int i;
 
-	for (i = 0; Input[i]; i++)
-	{
-		putchar(tolower(Input[i]));
-		putchar(toupper(Input[i]));
-		putchar('\n');
-	}
+	for (i = 'a'; i <= 'z'; i++)
+		putchar(i);
+	for (i = 'A'; i <= 'Z'; i++)
+		putchar(i);
 
+	putchar('\n');
 	return (0);
 }
-
