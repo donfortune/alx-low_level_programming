@@ -15,11 +15,9 @@ int main(void)
 
 	for (i = 0; Input[i]; i++)
 	{
-		Input[i] = tolower(Input[i]);
-		putchar(Input[i]);
+		putchar(tolower(Input[i]));
+		putchar(toupperer(Input[i]));
 		putchar('\n');
-		Input[i] = toupper(Input[i]);
-		putchar(Input[i]);
 	}
 
 	return (0);
