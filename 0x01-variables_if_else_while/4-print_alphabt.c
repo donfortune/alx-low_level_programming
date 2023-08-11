@@ -8,16 +8,13 @@
  */
 int main(void)
 {
-	char Input[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 	int i;
 
-	for (i = 0; Input[i]; i++)
+	for (i = 'a'; i <= 'z'; i++)
 	{
-		char lowercase = tolower(Input[i]);
-		if (lowercase != 'g' && lowercase != 'e')
+		if (i != 'q' && i != 'e')
 		{
-			putchar(lowercase);
-			putchar('\n');
+			putchar(i);
 		}
 	}
 
