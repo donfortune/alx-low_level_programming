@@ -1,3 +1,3 @@
 #!/bin/bah
-
-ar rcs liball.a *c *o
+gcc -c *.c
+ar rc liball.a *.o
