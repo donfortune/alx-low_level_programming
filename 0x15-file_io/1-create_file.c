@@ -2,57 +2,36 @@
 
 /**
  * read_textfile - read a text file.
- * @filename: thename of the file.
- * @letters: numbers of letters.
- * Return: the actual number of letters it should priint.
+ * @filename: the name of the file.
+ * @letters: numbers of letters to be printed.
+ * Return: numbers of letters printed. It fails, returns 0.
  */
 
 ssize_t read_textfile(const char *filename, size_t letters)
 {
-	char *result;
+	int file;
 	ssize_t bytes_read;
 	ssize_t bytes_write;
+	char *buf;
 
-	if (filename == NULL)
+	if (!filename)
 		return (0);
 
-	FILE = *fp;
+	file = open(filename, O_RDONLY);
 
-	fp = fopen(filename, "r");
-
-	if (fp == NULL)
+	if (file == -1)
 		return (0);
 
-	result = malloc(letters);
-
-	if (result == NULL)
-	{
-		fclose(fp);
+	buf = malloc(sizeof(char) * (letters));
+	if (!buf)
 		return (0);
-	}
 
+	bytes_read = read(file, buf, letters);
+	bytes_write = write(STDOUT_FILENO, buf, bytes_read);
 
-	bytes_read = fread(fp, 1, bytes, letters);
+	close(file);
 
-	if (bytes_read == -1)
-	{
-		fclose(fp);
-		free(result);
-		return (0);;
-	}
-
-	bytes_write = fwrite(fp, 1, bytes_read, stdout);
-
-	if (bytes_write == -1)
-	{
-		fclose(fp);
-		free(result);
-		return (0)
-	}
-
-	fclose(fp);
-	free (result);
+	free(buf);
 
 	return (bytes_write);
-
 }
